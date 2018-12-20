@@ -10,14 +10,79 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
   <link rel="shortcut icon" type="image/ico" href="img/favicon.ico" />
-  <link rel="stylesheet" type="text/css" href="css/connect4.css">
+  <link rel="stylesheet" type="text/css" href="css/axiebuilder.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
+
 
   <title>Axie Builder</title>
 </head>
 
 <body>
-  Welcome!
+  <div class="dropdown eyes">
+    <button class="btn btn-ligth dropdown-toggle" type="button" id="dropdown_eyes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eyes</button>
+    <div id="eyeMenu" class="dropdown-menu" aria-labelledby="dropdown_eyes">
+      <form class="px-4 py-2">
+        <input type="search" class="form-control" id="searchEyes" placeholder="Search" autofocus="autofocus">
+      </form>
+      <div id="eyeItems"></div>
+      <div id="emptyeyes" class="dropdown-header">No matching records</div>
+    </div>
+  </div>
+  <div class="dropdown ears">
+    <button class="btn btn-ligth dropdown-toggle" type="button" id="dropdown_ears" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ears</button>
+    <div id="earMenu" class="dropdown-menu" aria-labelledby="dropdown_ears">
+      <form class="px-4 py-2">
+        <input type="search" class="form-control" id="searchEars" placeholder="Search" autofocus="autofocus">
+      </form>
+      <div id="earItems"></div>
+      <div id="emptyears" class="dropdown-header">No matching records</div>
+    </div>
+  </div>
+  <div class="dropdown mouths">
+    <button class="btn btn-ligth dropdown-toggle" type="button" id="dropdown_mouths" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mouth</button>
+    <div id="mouthMenu" class="dropdown-menu" aria-labelledby="dropdown_mouths">
+      <form class="px-4 py-2">
+        <input type="search" class="form-control" id="searchMouths" placeholder="Search" autofocus="autofocus">
+      </form>
+      <div id="mouthItems"></div>
+      <div id="emptymouths" class="dropdown-header">No matching records</div>
+    </div>
+  </div>
+  <div class="dropdown horns">
+    <button class="btn btn-ligth dropdown-toggle" type="button" id="dropdown_horns" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Horn</button>
+    <div id="hornMenu" class="dropdown-menu" aria-labelledby="dropdown_horns">
+      <form class="px-4 py-2">
+        <input type="search" class="form-control" id="searchHorns" placeholder="Search" autofocus="autofocus">
+      </form>
+      <div id="hornItems"></div>
+      <div id="emptyhorns" class="dropdown-header">No matching records</div>
+    </div>
+  </div>
+  <div class="dropdown backs">
+    <button class="btn btn-ligth dropdown-toggle" type="button" id="dropdown_backs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Back</button>
+    <div id="backMenu" class="dropdown-menu" aria-labelledby="dropdown_backs">
+      <form class="px-4 py-2">
+        <input type="search" class="form-control" id="searchBacks" placeholder="Search" autofocus="autofocus">
+      </form>
+      <div id="backItems"></div>
+      <div id="emptybacks" class="dropdown-header">No matching records</div>
+    </div>
+  </div>
+  <div class="dropdown tails">
+    <button class="btn btn-ligth dropdown-toggle" type="button" id="dropdown_tails" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tail</button>
+    <div id="tailMenu" class="dropdown-menu" aria-labelledby="dropdown_tails">
+      <form class="px-4 py-2">
+        <input type="search" class="form-control" id="searchTails" placeholder="Search" autofocus="autofocus">
+      </form>
+      <div id="tailItems"></div>
+      <div id="emptytails" class="dropdown-header">No matching records</div>
+    </div>
+  </div>
+  <script src="js/dropdown.js"></script>
 </body>
 
 </html>
