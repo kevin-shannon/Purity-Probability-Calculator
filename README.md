@@ -2,9 +2,9 @@ axiebuilder
 ======
 *By Kevin Shannon*  
 
-Preview your own axie recipes.
+Find the probability distribution for the pureness of your Axie offspring.
 
 Try it out!
 ------
 
-### http://kevers429.github.io/axiebuilder/
+### http://kevers429.github.io/Pureness-Probability-Calculator/
