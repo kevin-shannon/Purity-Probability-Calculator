@@ -1,0 +1,25 @@
+.main {
+  width: 80%
+}
+
+.axieImg {
+  width: 50%
+}
+
+.col label {
+  display: block
+}
+
+#dropdown-class {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.btn-space {
+  margin-left: 5px
+}
+
+#calcButton {
+  margin-top: 20px
+}
