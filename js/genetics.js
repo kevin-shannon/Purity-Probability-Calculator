@@ -1,4 +1,5 @@
 const classGeneMap = {"0000": "beast", "0001": "bug", "0010": "bird", "0011": "plant", "0100": "aquatic", "0101": "reptile"};
+const partNames = ["eyes","ears","mouth","horn","back","tail"];
 
 if (typeof web3 !== 'undefined') {
   web3 = new Web3(web3.currentProvider);
@@ -42,27 +43,71 @@ function getGenesFromGroup(part, group, region) {
 
 function getAxie(id, callback) {
   $.ajax({
-     async: false,
-     type: 'GET',
-     url: "https://api.axieinfinity.com/v1/axies/" + parseInt(id),
-     success: function(data) {
-       if (data.stage < 3) {
-         return;
-       }
-       axies[data.id] = {"id": data.id, "genes": genesToBin(new BigNumber(data.genes))};
-       let axie = axies[data.id];
-       console.log(0)
-       axie.image = data.figure.static.idle;
-       axie.traits = getGenes(axie.genes);
-       callback();
-     }
+    async: false,
+    type: 'GET',
+    url: "https://api.axieinfinity.com/v1/axies/" + parseInt(id),
+    success: function(data) {
+      if (data.stage < 3) {
+        return;
+      }
+      axies[data.id] = {"id": data.id, "genes": genesToBin(new BigNumber(data.genes))};
+      let axie = axies[data.id];
+      axie.image = data.figure.static.idle;
+      axie.traits = getGenes(axie.genes);
+      callback();
+    }
   });
 }
 
-function clearAxies() {
-  axies = {}
+function genPartProbs(desire, dadID, momID) {
+  partProbsList = [0,0,0,0,0,0];
+  for(parts in classes) {
+    if(eval("axies[dadID].traits." + partNames[parts] + ".dClass;") == desire) {
+      partProbsList[parts] += .375;
+    }
+    if(eval("axies[momID].traits." + partNames[parts] + ".dClass;") == desire) {
+      partProbsList[parts] += .375;
+    }
+    if(eval("axies[dadID].traits." + partNames[parts] + ".r1Class;") == desire) {
+      partProbsList[parts] += .09375;
+    }
+    if(eval("axies[momID].traits." + partNames[parts] + ".r1Class;") == desire) {
+      partProbsList[parts] += .09375;
+    }
+    if(eval("axies[dadID].traits." + partNames[parts] + ".r2Class;") == desire) {
+      partProbsList[parts] += .03125;
+    }
+    if(eval("axies[momID].traits." + partNames[parts] + ".r2Class;") == desire) {
+      partProbsList[parts] += .03125;
+    }
+    if(partProbsList[parts] == 1) {
+      partProbsList[parts] -= .01 //recursive poisson bimnomial cannot have probability of an event equal to 1
+    }
+  }
+  return partProbsList;
 }
 
-function generateProbabilities() {
+function poissonBinomial(s) {
+  n = s.length;
+  pmf = new Array(n+1).fill(0);
 
+  //Case K = 0
+  pmf[0] = prod(invert(s));
+
+  //find T(i)
+  T = new Array(n).fill(0);
+  var k;
+  for(k = 0; k < n; k++) {
+    T[k] = sumT(s, k+1);
+  }
+
+  //Case k > 0
+  for(k = 1; k <= n; k++) {
+    var u;
+    for(u = 1; u <= k; u++) {
+      pmf[k] = pmf[k] + (Math.pow(-1,(u-1))*pmf[k-u]*T[u-1]);
+    }
+    pmf[k] = pmf[k]/k;
+  }
+  console.log(pmf);
 }

@@ -22,6 +22,7 @@ $(document).ready(function() {
     axies = {}
     getAxie($('#dad-ID').val(), setDadImg);
     getAxie($('#mom-ID').val(), setMomImg);
+    poissonBinomial(genPartProbs($('#dropdown-class').text(), parseInt($('#dad-ID').val()), parseInt($('#mom-ID').val())));
   });
 });
 
