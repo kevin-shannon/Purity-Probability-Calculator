@@ -109,5 +109,5 @@ function poissonBinomial(s) {
     }
     pmf[k] = pmf[k]/k;
   }
-  console.log(pmf);
+  return pmf;
 }
