@@ -16,7 +16,7 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js" integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>
-
+  <script src=https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.js></script>
 
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -48,12 +48,20 @@
         </div>
       </form>
       <button class="btn btn-primary" type="button" id="calcButton">Calculate</button>
-      <table class="table table-bordered" id="prob-table">
-      </table>
+      <small class="form-text text-muted">The Pureness Probability Calculator generates the probability distribution of 2 parent Axies having a child with a number of traits of the chosen class.</small>
+      <div id="infographics">
+        <div id="tbl-container">
+          <table class="table table-bordered" id="prob-table"></table>
+        </div>
+        <div class="chart-container">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
     </div>
   </div>
   <script src="js/utils.js"></script>
   <script src="js/genetics.js"></script>
   <script src="js/UI.js"></script>
+  <script src="js/chart/dist/chart.js"></script>
 </body>
 </html>

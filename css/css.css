@@ -1,13 +1,13 @@
 .main {
-  width: 80%
+  width: 80%;
 }
 
 .axieImg {
-  width: 50%
+  width: 50%;
 }
 
 .col label {
-  display: block
+  display: block;
 }
 
 #dropdown-class {
@@ -17,14 +17,28 @@
 }
 
 .btn-space {
-  margin-left: 5px
+  margin-left: 5px;
 }
 
 #calcButton {
-  margin-top: 20px
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
 
-#prob-table {
-  margin-top: 20px
-  width: 50%
+#infographics {
+  margin-top: 20px;
+}
+
+#tbl-container {
+  width: 30%;
+  margin-right: 40px;
+}
+
+#tbl-container {
+  display: inline-block;
+}
+
+.chart-container {
+  display: inline-block;
+  margin: auto;
 }

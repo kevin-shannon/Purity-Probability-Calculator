@@ -24,6 +24,7 @@ $(document).ready(function() {
     getAxie($('#mom-ID').val(), setMomImg);
     var pmf = poissonBinomial(genPartProbs($('#dropdown-class').text(), parseInt($('#dad-ID').val()), parseInt($('#mom-ID').val())));
     buildTable(pmf, "prob-table");
+    makeChart(pmf, $('#dropdown-class').text());
   });
 });
 
@@ -59,13 +60,72 @@ function buildTable(pmf, name) {
     th.scope = "row";
     th.appendChild(document.createTextNode(i));
     if(pmf[i] > 0 && parseFloat(pmf[i].toFixed(5)) == 0) {
-      td.appendChild(document.createTextNode("nearly impossible"));
+      td.appendChild(document.createTextNode("~0%"));
     } else {
-      td.appendChild(document.createTextNode(parseFloat((pmf[i]*100).toFixed(7))+"%"));
+      td.appendChild(document.createTextNode(parseFloat((pmf[i]*100).toFixed(5))+"%"));
     }
     tr.appendChild(th);
     tr.appendChild(td);
     tbdy.appendChild(tr);
   }
   tbl.appendChild(tbdy);
+}
+
+function makeChart(pmf, cls) {
+  var ctx = document.getElementById("myChart").getContext('2d');
+  ctx.canvas.width = $("#infographics")[0].offsetWidth/1.8;
+  ctx.canvas.height = $("#infographics")[0].offsetHeight;
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["0", "1", "2", "3", "4", "5", "6"],
+      datasets: [{
+        data: [parseFloat((pmf[0]*100).toFixed(5)),
+        parseFloat((pmf[1]*100).toFixed(5)),
+        parseFloat((pmf[2]*100).toFixed(5)),
+        parseFloat((pmf[3]*100).toFixed(5)),
+        parseFloat((pmf[4]*100).toFixed(5)),
+        parseFloat((pmf[5]*100).toFixed(5)),
+        parseFloat((pmf[6]*100).toFixed(5))],
+        backgroundColor: [
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(54, 162, 235, 0.5)'
+        ]
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      legend: {
+        display: false
+      },
+      title: {
+        display: true,
+        text: "Probability Distribution of Purity for " + cls.charAt(0).toUpperCase() + cls.slice(1) + " Parts"
+      },
+      scales: {
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Number of Parts'
+          },
+          gridLines: {
+            display:false
+          }
+        }],
+        yAxes: [{
+          ticks: {
+             callback: function(value) {
+               return value + "%"
+             }
+           },
+        }]
+      }
+    }
+  });
 }
