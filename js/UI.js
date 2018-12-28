@@ -13,6 +13,19 @@ function buildDropDown(values, menu) {
 $('#classItems').on('click', '.dropdown-item', function() {
   $('#dropdown-class').text($(this)[0].value);
   $("#dropdown-class").dropdown('toggle');
+  if($(this)[0].value == "aquatic") {
+    $('#dropdown-class').removeClass().addClass('btn btn-aquatic dropdown-toggle btn-space')
+  } else if($(this)[0].value == "beast") {
+    $('#dropdown-class').removeClass().addClass('btn btn-beast dropdown-toggle btn-space')
+  } else if($(this)[0].value == "bird") {
+    $('#dropdown-class').removeClass().addClass('btn btn-bird dropdown-toggle btn-space')
+  } else if($(this)[0].value == "bug") {
+    $('#dropdown-class').removeClass().addClass('btn btn-bug dropdown-toggle btn-space')
+  } else if($(this)[0].value == "plant") {
+    $('#dropdown-class').removeClass().addClass('btn btn-plant dropdown-toggle btn-space')
+  } else if($(this)[0].value == "reptile") {
+    $('#dropdown-class').removeClass().addClass('btn btn-reptile dropdown-toggle btn-space')
+  }
 })
 
 buildDropDown(classes, '#classItems')
@@ -79,6 +92,20 @@ function makeChart(pmf, cls) {
   var ctx = document.getElementById("myChart").getContext('2d');
   ctx.canvas.width = $("#infographics")[0].offsetWidth/1.8;
   ctx.canvas.height = $("#infographics")[0].offsetHeight;
+  var colcolor;
+  if(cls == "aquatic") {
+    colcolor = 'rgba(0, 190, 196, 0.5)'
+  } else if(cls == "beast") {
+    colcolor = 'rgba(255, 183, 5, 0.5)'
+  } else if(cls == "bird") {
+    colcolor = 'rgba(253, 146, 190, 0.5)'
+  } else if(cls == "bug") {
+    colcolor = 'rgba(240, 90, 65, 0.5)'
+  } else if(cls == "plant") {
+    colcolor = 'rgba(107, 194, 0, 0.5)'
+  } else {
+    colcolor = 'rgba(201, 136, 220, 0.5)'
+  }
   var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -92,13 +119,12 @@ function makeChart(pmf, cls) {
         parseFloat((pmf[5]*100).toFixed(5)),
         parseFloat((pmf[6]*100).toFixed(5))],
         backgroundColor: [
-          'rgba(54, 162, 235, 0.5)',
-          'rgba(54, 162, 235, 0.5)',
-          'rgba(54, 162, 235, 0.5)',
-          'rgba(54, 162, 235, 0.5)',
-          'rgba(54, 162, 235, 0.5)',
-          'rgba(54, 162, 235, 0.5)',
-          'rgba(54, 162, 235, 0.5)'
+          colcolor,
+          colcolor,
+          colcolor,
+          colcolor,
+          colcolor,
+          colcolor
         ]
       }]
     },
