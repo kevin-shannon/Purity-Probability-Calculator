@@ -1,8 +1,8 @@
-Pureness-Probability-Calculator
+Purity-Probability-Calculator
 ======
 *By Kevin Shannon*  
 
-Find the probability distribution for the pureness of your Axie offspring.
+Find the probability distribution for the purity of your Axie offspring.
 
 Try it out!
 ------
