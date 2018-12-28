@@ -25,6 +25,7 @@ $(document).ready(function() {
     var pmf = poissonBinomial(genPartProbs($('#dropdown-class').text(), parseInt($('#dad-ID').val()), parseInt($('#mom-ID').val())));
     buildTable(pmf, "prob-table");
     makeChart(pmf, $('#dropdown-class').text());
+    showExpectedValue(pmf);
   });
 });
 
@@ -72,6 +73,9 @@ function buildTable(pmf, name) {
 }
 
 function makeChart(pmf, cls) {
+  $("canvas#myChart").remove();
+  $("div.chart-container").append('<canvas id="myChart"></canvas>');
+  $('iframe.chartjs-hidden-iframe').remove();
   var ctx = document.getElementById("myChart").getContext('2d');
   ctx.canvas.width = $("#infographics")[0].offsetWidth/1.8;
   ctx.canvas.height = $("#infographics")[0].offsetHeight;
@@ -110,10 +114,6 @@ function makeChart(pmf, cls) {
       },
       scales: {
         xAxes: [{
-          scaleLabel: {
-            display: true,
-            labelString: 'Number of Parts'
-          },
           gridLines: {
             display:false
           }
@@ -128,4 +128,13 @@ function makeChart(pmf, cls) {
       }
     }
   });
+}
+
+function showExpectedValue(pmf) {
+  var i;
+  var E = 0;
+  for(i = 1; i < pmf.length; i++) {
+    E += i*pmf[i];
+  }
+  document.getElementById("expected-val").innerHTML = "Average Purity: " + E.toFixed(5);
 }
