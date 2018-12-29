@@ -102,7 +102,7 @@ function buildTable(pmf, name) {
     th = document.createElement('th');
     th.scope = "row";
     th.appendChild(document.createTextNode(i));
-    if(pmf[i] > 0 && parseFloat(pmf[i].toFixed(5)) == 0) {
+    if(pmf[i] > 0 && parseFloat(pmf[i].toFixed(5)) == 0 && pmf[i] > Math.pow(10,-10)) {
       td.appendChild(document.createTextNode("~0%"));
     } else {
       td.appendChild(document.createTextNode(parseFloat((pmf[i]*100).toFixed(5))+"%"));
