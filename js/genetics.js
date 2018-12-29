@@ -19,7 +19,7 @@ function strMul(str, num) {
 
 function genesToBin(genes) {
   var genesString = genes.toString(2);
-  genesString = strMul("0", 256 - genesString.length) + genesString
+  genesString = strMul("0", 256 - genesString.length) + genesString;
   return genesString;
 }
 
