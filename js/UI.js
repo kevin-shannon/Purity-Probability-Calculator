@@ -10,27 +10,6 @@ jQuery.fn.invisible = function() {
     return this.css('visibility', 'hidden');
 };
 
-// Select mom and dad inputs
-var dadNum = document.getElementById('dad-ID');
-var momNum = document.getElementById('mom-ID');
-
-// Listen for input event on numInput.
-dadNum.onkeydown = function(e) {
-  if(!((e.keyCode > 95 && e.keyCode < 106)
-  || (e.keyCode > 47 && e.keyCode < 58)
-  || e.keyCode == 8)) {
-    return false;
-  }
-}
-
-momNum.onkeydown = function(e) {
-  if(!((e.keyCode > 95 && e.keyCode < 106)
-  || (e.keyCode > 47 && e.keyCode < 58)
-  || e.keyCode == 8)) {
-    return false;
-  }
-}
-
 function buildDropDown(values, menu) {
   let contents = []
   for(let name of values) {
