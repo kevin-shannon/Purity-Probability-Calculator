@@ -25,7 +25,7 @@
   <link rel="stylesheet" type="text/css" href="css/css.css">
   <link rel="stylesheet" type="text/css" href="css/buttons.css">
 
-  <title>Pureness Probability Calculator</title>
+  <title>Purity Probability Calculator</title>
 </head>
 
 <body>
@@ -51,8 +51,12 @@
           </div>
         </div>
       </form>
-      <button class="btn btn-primary" type="button" id="calcButton">Calculate</button>
-      <small class="form-text text-muted">The Purity Probability Calculator generates the probability distribution of 2 parent Axies having a child with a number of parts of the chosen class.</small>
+      <div class="test">
+        <button class="btn btn-primary" type="button" id="calcButton" style="vertical-align: middle;">Calculate</button>
+        <div class="alert alert-danger" role="alert" style="display: inline-block; padding-top: 6px; padding-bottom: 6px; vertical-align: middle; margin-top:20px; visibility: hidden;">
+          <strong>Oops! </strong> Choose a class.
+        </div>
+    </div>
       <div id="infographics">
         <div id="tbl-container">
           <table class="table table-bordered" id="prob-table"></table>
@@ -63,7 +67,11 @@
       </div>
       <h4 id="expected-val" style="text-align:center; margin-top: 30px; font-weight:bold"></h4>
     </div>
+    <footer style="width: 65%; margin-bottom: 5px;">
+      <small class="form-text text-muted" id="info">The Purity Probability Calculator generates the probability distribution of 2 parent Axies having a child with a number of parts of the chosen class. It is possible that these numbers could be wrong (but I doubt it).</small>
+    </footer>
   </div>
+
   <script src="js/utils.js"></script>
   <script src="js/genetics.js"></script>
   <script src="js/UI.js"></script>

@@ -21,8 +21,7 @@
 }
 
 #calcButton {
-  margin-top: 20px;
-  margin-bottom: 5px;
+  margin-right: 15px;
 }
 
 #infographics {
@@ -41,4 +40,25 @@
 .chart-container {
   display: inline-block;
   margin: auto;
+}
+
+.alert {
+  display: inline-block;
+}
+
+footer {
+  position:absolute;
+  bottom:0;
+  height:50px;
+  text-align: center;
+}
+
+html,
+body, .container {
+    height: 100%;
+}
+
+#info {
+  position: absolute;
+  bottom: 0;
 }

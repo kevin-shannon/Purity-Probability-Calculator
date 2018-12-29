@@ -48,6 +48,7 @@ function getAxie(id, callback) {
     url: "https://api.axieinfinity.com/v1/axies/" + parseInt(id),
     success: function(data) {
       if (data.stage < 3) {
+        reset(id);
         return;
       }
       axies[data.id] = {"id": data.id, "genes": genesToBin(new BigNumber(data.genes))};
@@ -55,7 +56,10 @@ function getAxie(id, callback) {
       axie.image = data.figure.static.idle;
       axie.traits = getGenes(axie.genes);
       callback();
-    }
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+      reset(id);
+   }
   });
 }
 

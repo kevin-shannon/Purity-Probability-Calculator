@@ -2,6 +2,14 @@ classes = ["aquatic","beast","bird","bug","plant","reptile"]
 
 items = document.getElementsByClassName("dropdown-item");
 
+jQuery.fn.visible = function() {
+    return this.css('visibility', 'visible');
+};
+
+jQuery.fn.invisible = function() {
+    return this.css('visibility', 'hidden');
+};
+
 function buildDropDown(values, menu) {
   let contents = []
   for(let name of values) {
@@ -32,6 +40,13 @@ buildDropDown(classes, '#classItems')
 
 $(document).ready(function() {
   $("#calcButton").click(function(ImageSwap) {
+    if($('#dropdown-class').text() == "Class") {
+      $('.alert').visible();
+      return;
+    }
+    $('.alert').invisible();
+    $('#infographics').show();
+    $('#expected-val').show();
     axies = {}
     getAxie($('#dad-ID').val(), setDadImg);
     getAxie($('#mom-ID').val(), setMomImg);
@@ -48,6 +63,20 @@ function setDadImg() {
 
 function setMomImg() {
   document.getElementById("momImg").src = axies[parseInt($('#mom-ID').val())].image;
+}
+
+function reset(id) {
+  $('#infographics').hide();
+  $('#expected-val').hide();
+  resetImg(id);
+}
+
+function resetImg(id) {
+  if(parseInt($('#dad-ID').val()) == id || id == "") {
+    document.getElementById("dadImg").src = 'img/emptyaxie.png';
+  } if(parseInt($('#mom-ID').val()) == id || id == "") {
+    document.getElementById("momImg").src = 'img/emptyaxie.png';
+  }
 }
 
 function buildTable(pmf, name) {
@@ -119,6 +148,7 @@ function makeChart(pmf, cls) {
         parseFloat((pmf[5]*100).toFixed(5)),
         parseFloat((pmf[6]*100).toFixed(5))],
         backgroundColor: [
+          colcolor,
           colcolor,
           colcolor,
           colcolor,
