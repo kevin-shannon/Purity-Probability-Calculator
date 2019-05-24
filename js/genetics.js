@@ -45,7 +45,7 @@ function getAxie(id, callback) {
   $.ajax({
     async: false,
     type: 'GET',
-    url: "https://api.axieinfinity.com/v1/axies/" + parseInt(id),
+    url: "https://axieinfinity.com/api/v2/axies/" + parseInt(id),
     success: function(data) {
       if (data.stage < 3) {
         reset(id);
