@@ -7,4 +7,4 @@ Find the probability distribution for the purity of your Axie offspring.
 Try it out!
 ------
 
-### https://kevin-shannon.dev/Purity-Probability-Calculator/
+### https://kevinshannon.dev/Purity-Probability-Calculator/
