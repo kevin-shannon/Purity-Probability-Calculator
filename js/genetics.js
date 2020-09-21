@@ -53,7 +53,7 @@ function getAxie(id, callback) {
       }
       axies[data.id] = {"id": data.id, "genes": genesToBin(new BigNumber(data.genes))};
       let axie = axies[data.id];
-      axie.image = data.figure.static.idle;
+      axie.image = data.image;
       axie.traits = getGenes(axie.genes);
       callback();
     },
