@@ -1,6 +1,6 @@
 Purity-Probability-Calculator
 ======
-*By Kevin Shannon*  
+***This tool is depreciated, the API migrated, and the gameplay loop changed***
 
 Find the probability distribution for the purity of your Axie offspring.
 
